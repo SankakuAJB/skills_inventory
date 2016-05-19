@@ -1,3 +1,19 @@
-<%= current_user.name %><br>
-<%= current_user.phone %><br>
-<%= current_user.email %><br>
+<% provide(:title, @user.name) %>
+
+<div class="row">
+	<aside class="col-md-4">
+		<section>
+			<h1>
+				<%= @user.name %><br>
+				<%= @user.phone %><br>
+				<%= @user.email %><br>
+			</h1>
+		</section>
+		<section class="stats">
+			<%= render 'shared/stats' %>
+		</section>
+	</aside>
+	<div class="col-md-8">
+		<%= render 'follow_form' if user_signed_in? %>
+	</div>
+</div>
