@@ -1,10 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-  	<%= link_to "Zacs Linked In", '#', id: "logo" %>
+    <% if user_signed_in? %>
+  	  <%= link_to "Zacs Linked In", authenticated_root_path, id: "logo" %>
+    <% else %>
+      <%= link_to "Zacs Linked In", unauthenticated_root_path, id: "logo" %>
+    <% end %>
   	<nav>
   		<ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to current_user.name, user_path(current_user) %></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
         <% end %>
 
   			<li><%= link_to "Users", users_path %></li>
