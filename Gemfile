@@ -25,9 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use bootstrap
 gem 'bootstrap-sass', '3.2.0.0'
-
 # Use devise for authentication/sessions
 gem 'devise', '3.5.6'
+# Use will_paginate
+gem 'will_paginate','3.0.7'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
