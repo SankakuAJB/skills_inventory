@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   								   foreign_key: "followed_id",
   								   dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+
+  has_many :skills
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

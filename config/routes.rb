@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do 
     authenticated :user do 
-      root 'users#show', as: :authenticated_root
+      root 'users#current_user_home', as: :authenticated_root
     end
 
     unauthenticated do 
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+  resources :skills, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

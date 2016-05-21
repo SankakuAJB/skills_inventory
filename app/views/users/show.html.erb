@@ -3,14 +3,21 @@
 <div class="row">
 	<aside class="col-md-4">
 		<section>
-			<h1>
-				<%= @user.name %><br>
+			<h1><%= @user.name %><br></h1>
+			<p>
 				<%= @user.phone %><br>
 				<%= @user.email %><br>
-			</h1>
+			</p>
 		</section>
 		<section class="stats">
 			<%= render 'shared/stats' %>
+		</section>
+		<section class="skills">
+			<h2>Skills</h2>
+			<% current_user.skills.each do |skill| %>
+				<%= skill.skill %><br>
+			<% end %>
+			<%= link_to "Add Skill", new_skill_path %>
 		</section>
 	</aside>
 	<div class="col-md-8">
