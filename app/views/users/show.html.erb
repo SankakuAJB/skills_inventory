@@ -12,12 +12,27 @@
 		<section class="stats">
 			<%= render 'shared/stats' %>
 		</section>
+		<section class="employees">
+			<h1>Jobs</h1>
+			<ul>
+				<% @user.employees.each do |employee| %>
+					<li><%= employee.position %></li>
+					<ul>
+						<li><%= employee.work_email %></li>
+						<li><%= employee.employer %></li>
+					</ul>
+				<% end %>
+			</ul>
+			<%= link_to "Add job", new_employee_path %>
+		</section>
 		<section class="skills">
 			<h2>Skills</h2>
 			<% current_user.skills.each do |skill| %>
-				<%= skill.skill %><br>
+				<%= skill.skill + "   " + skill.level.to_s %><br>
 			<% end %>
 			<%= link_to "Add Skill", new_skill_path %>
+		</section>
+		<section class="Experience">
 		</section>
 	</aside>
 	<div class="col-md-8">

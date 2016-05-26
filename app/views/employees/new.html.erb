@@ -1,0 +1,24 @@
+<h1>New Job</h1>
+
+<%= form_for(current_user.employees.build) do |f| %>
+
+  <div class="field">
+    <%= f.label :work_email %><br />
+    <%= f.email_field :work_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= f.label :employer %><br />
+    <%= f.text_field :employer %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Skill" %>
+  </div>
+
+<% end %>

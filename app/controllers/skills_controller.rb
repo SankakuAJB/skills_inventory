@@ -12,7 +12,6 @@ class SkillsController < ApplicationController
 
 
 
-
 	private
 
 		def skill_params
