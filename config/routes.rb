@@ -16,11 +16,13 @@ Rails.application.routes.draw do
     member do 
       get :following, :followers 
     end
+
+    resources :endorsements,  only: [:new, :create, :destroy]
   end
 
   resources :relationships, only: [:create, :destroy]
-  resources :skills, only: [:new, :create, :destroy]
-  resources :employees, only: [:new, :create, :destroy]
+  resources :skills,        only: [:new, :create, :destroy]
+  resources :employees,     only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

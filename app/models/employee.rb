@@ -1,4 +1,6 @@
 class Employee < ActiveRecord::Base
+	has_many :endorsements
+	
 	belongs_to :user
 
 	validates :work_email, presence: true

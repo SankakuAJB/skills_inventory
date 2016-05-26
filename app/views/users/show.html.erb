@@ -3,7 +3,15 @@
 <div class="row">
 	<aside class="col-md-4">
 		<section>
-			<h1><%= @user.name %><br></h1>
+			<h1><%= @user.name %></h1>
+			<%= @user.endorsements.count.to_s %> Endorsements
+			<% unless current_user == @user %>
+				<% if current_user.endorsing?(@user) %>
+					<%= link_to "Unendorse User", user_endorsement_path(@user.id, current_user.id), :method => :delete %>
+				<% else %>
+					<%= link_to "Endorse User", user_endorsements_path(@user.id), :method => :post %><br>
+				<% end %>
+			<% end %>
 			<p>
 				<%= @user.phone %><br>
 				<%= @user.email %><br>
@@ -23,14 +31,20 @@
 					</ul>
 				<% end %>
 			</ul>
-			<%= link_to "Add job", new_employee_path %>
+			<% if current_user == @user %>
+				<%= link_to "Add job", new_employee_path %>
+			<% end %>
 		</section>
 		<section class="skills">
 			<h2>Skills</h2>
-			<% current_user.skills.each do |skill| %>
-				<%= skill.skill + "   " + skill.level.to_s %><br>
+			<ul>
+				<% @user.skills.each do |skill| %>
+					<li><%= skill.skill + " " + skill.level.to_s %></li>
+				<% end %>
+			</ul>
+			<% if current_user == @user %>
+				<%= link_to "Add Skill", new_skill_path %>
 			<% end %>
-			<%= link_to "Add Skill", new_skill_path %>
 		</section>
 		<section class="Experience">
 		</section>

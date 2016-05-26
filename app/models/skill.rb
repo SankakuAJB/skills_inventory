@@ -1,4 +1,6 @@
 class Skill < ActiveRecord::Base
+	has_many :endorsements
+
 	belongs_to :user
 
 	validates :skill, presence: true
