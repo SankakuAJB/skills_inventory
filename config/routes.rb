@@ -18,8 +18,13 @@ Rails.application.routes.draw do
     end
 
     resources :endorsements,  only: [:new, :create, :destroy]
+    resources :comments,      only: [:create, :destroy]
   end
 
+  resources :skills do
+    resources :endorsements, only: [:new, :create, :destroy]
+  end
+  
   resources :relationships, only: [:create, :destroy]
   resources :skills,        only: [:new, :create, :destroy]
   resources :employees,     only: [:new, :create, :destroy]

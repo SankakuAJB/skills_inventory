@@ -39,14 +39,32 @@
 			<h2>Skills</h2>
 			<ul>
 				<% @user.skills.each do |skill| %>
-					<li><%= skill.skill + " " + skill.level.to_s %></li>
+					<li>
+						<%= skill.skill + " " + skill.level.to_s %>
+						<% unless current_user == @user %>
+							<%= link_to "Endorse Skill", skill_endorsements_path(skill.id), :method => :post %>
+						<% end %>
+					</li>
 				<% end %>
 			</ul>
 			<% if current_user == @user %>
 				<%= link_to "Add Skill", new_skill_path %>
 			<% end %>
 		</section>
-		<section class="Experience">
+		<section class="Comments">
+			<h2>Comments</h2>
+			<% unless @user == current_user %>
+				<h3>Post comment</h3>
+				<%= render 'shared/comment_form', user: @user %>
+			<% end %>
+			<% if @user.comments.any? %>
+				<% @user.comments.each do |comment| %>
+					<p>
+						Content: <%= comment.comment %><br>
+						Author: <%= comment.commenter.name %>
+					</p>
+				<% end %>
+			<% end %>
 		</section>
 	</aside>
 	<div class="col-md-8">

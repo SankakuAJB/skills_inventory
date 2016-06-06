@@ -1,0 +1,16 @@
+<%= form_for Comment.new, :url => user_comments_path(user.id) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<div class="field">
+		<%= f.label :comment %>
+		<%= f.text_area :comment %>
+	</div>
+
+	<div class="field">
+		<%= f.label :annonymous_flag, "Annonymous" %>
+		<%= f.check_box :annonymous_flag %>
+	</div>
+
+	<%= f.submit "Comment", class: "btn btn-primary" %>
+
+<% end %>
